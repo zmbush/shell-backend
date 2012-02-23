@@ -13,14 +13,23 @@ app = flask.Flask(__name__)
 app.debug = True
 flask.use_debugger = True
 
+@app.route('/<command>')
+@app.route('/<command>/')
 @app.route('/<command>/<arguments>')
-def exec(command, arguments):
-  aruments = arguments.split(";")
-  return command
+def execute(command, arguments = ""):
+  if flask.session.new or 'dir' not in flask.session:
+    flask.session['dir'] = '/www/zmbush.com/'
+  arguments = arguments.split(";")
+
+  if(command == 'pwd'): return flask.session['dir']
+  return command + ": command not found"
 
 if __name__ == '__main__':
   port = int(os.environ.get('PORT', 5000))
   logger = logging.FileHandler('logfiles')
   logger.setLevel(logging.WARNING)
+  app.secret_key = 'V\\aPV@@p5_!dlUWJM-//ky&Bg()84$Us'
   app.logger.addHandler(logger)
   app.run(host='0.0.0.0', port=port)
+
+
