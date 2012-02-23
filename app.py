@@ -13,10 +13,10 @@ app = flask.Flask(__name__)
 app.debug = True
 flask.use_debugger = True
 
-
-@app.route('/')
-def hello():
-  return '<a href="dropbox">Drag and Drop test</a><br /><a href="andre">Andre\'s code</a>'
+@app.route('/<command>/<arguments>')
+def exec(command, arguments):
+  aruments = arguments.split(";")
+  return command
 
 if __name__ == '__main__':
   port = int(os.environ.get('PORT', 5000))
