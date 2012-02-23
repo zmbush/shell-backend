@@ -76,7 +76,7 @@ function processCommand(cin, callback){
 }
 
 function displayOutput(output){
-  text += output;
+  text += output + "<br />";
   newPrompt()
 }
 

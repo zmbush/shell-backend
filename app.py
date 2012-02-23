@@ -21,7 +21,7 @@ def execute(command, arguments = ""):
     flask.session['dir'] = '/'
   arguments = arguments.split(";")
 
-  if(command == 'pwd'): return flask.session['dir'] + "<br />"
+  if(command == 'pwd'): return flask.session['dir']
   elif(command == 'cd' and len(arguments) == 0):
     flask.session['dir'] = '/'
     return ''
