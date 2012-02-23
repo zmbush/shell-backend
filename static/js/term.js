@@ -62,10 +62,10 @@ function processCommand(cin){
         arg = args.join(';')
       }
       $.ajax({
-        url: 'http://shell-backend.zmbush.com/' + command + '/' + arg,
+        url: '/' + command + '/' + arg,
         dataType: "html",
         error: function(){
-          displayOutput(cin + ": command not found");
+          displayOutput(cin + ": Bad things happened...");
         },
         success: function(output){
           displayOutput(output);
