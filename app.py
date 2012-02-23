@@ -6,14 +6,8 @@ import werkzeug
 import urllib2
 import urllib
 import subprocess
-import eyedadata
 import json
-import eyeD3.tag as TAG
 import sys
-from mxm import *
-from Song import *
-from echonest import track
-
 
 app = flask.Flask(__name__)
 app.debug = True
