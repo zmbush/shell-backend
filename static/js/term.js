@@ -50,7 +50,7 @@ function processCommand(cin, callback){
       window.location = "https://github.com/zipcodeman";
       break;
     case 'static':
-      window.location = '/static/';
+      window.location = 'http://www.zmbush.com/static/';
       break;
     case 'exit':
       window.location = 'http://www.google.com/';
