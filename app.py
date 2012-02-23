@@ -23,7 +23,7 @@ def execute(command, arguments = ""):
 
   if(command == 'pwd'): return flask.session['dir']
   elif(command == 'cd'):
-    if(len(arguments) == 0 or arguments[0] = ''):
+    if(len(arguments) == 0 or arguments[0] == ''):
       flask.session['dir'] = '/'
       return ''
   return command + ": command not found"
