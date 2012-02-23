@@ -18,7 +18,7 @@ flask.use_debugger = True
 @app.route('/<command>/<arguments>')
 def execute(command, arguments = ""):
   if flask.session.new or 'dir' not in flask.session:
-    flask.session['dir'] = '/www/zmbush.com/'
+    flask.session['dir'] = '/'
   arguments = arguments.split(";")
 
   if(command == 'pwd'): return flask.session['dir']

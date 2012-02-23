@@ -1,5 +1,6 @@
 var p = "<div style=\"clear:both\"></div>guest@zmbush.com $ "
-var text = '<br /><br /><br />Type `help` for a list of commands.<br />' + p
+var text = '<br /><br /><br />Type `help` for a list of commands.<br />'
+processCommand('pwd', setPrompt);
 var command = ""
 var cursor = "_"
 var accepting_input = true;
@@ -14,7 +15,7 @@ $(function(){
           text += '<br />';
           accepting_input = false;
           $('#term').html(text + '...');
-          processCommand(command);
+          processCommand(command, displayOutput);
           return false;
         default:
           command += String.fromCharCode(e.which);
@@ -37,7 +38,7 @@ $(function(){
   $('#term').html(text);
 });
 
-function processCommand(cin){
+function processCommand(cin, callback){
   switch(cin){
     case '':
       newPrompt();
@@ -65,10 +66,10 @@ function processCommand(cin){
         url: '/' + command + '/' + arg,
         dataType: "html",
         error: function(){
-          displayOutput(cin + ": Bad things happened...");
+          callback(cin + ": Bad things happened...");
         },
         success: function(output){
-          displayOutput(output);
+          callback(output);
         }
       });
   }
@@ -85,4 +86,11 @@ function newPrompt(){
   command = '';
   $('#term').html(text);
   $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+}
+
+function setPrompt(text){
+  dirs = text.split("/")
+  fold = dirs[dirs.length - 2]
+  p = "guest@zmbush.com " + fold + " $ "
+  newPrompt();
 }
