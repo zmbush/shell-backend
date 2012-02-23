@@ -89,8 +89,6 @@ function newPrompt(){
 }
 
 function setPrompt(text){
-  dirs = text.split("/")
-  fold = dirs[dirs.length - 2]
-  p = "guest@zmbush.com " + fold + " $ "
+  p = "guest@zmbush.com " + text + " $ "
   newPrompt();
 }
