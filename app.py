@@ -24,6 +24,12 @@ def execute(command, arguments = ""):
   if(command == 'pwd'): return flask.session['dir']
   return command + ": command not found"
 
+@app.route('/')
+def index():
+  error = None
+  returnVal = flask.render_template('index.html', error=error)
+  return returnVal
+
 if __name__ == '__main__':
   port = int(os.environ.get('PORT', 5000))
   logger = logging.FileHandler('logfiles')

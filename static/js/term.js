@@ -1,5 +1,3 @@
----
----
 var p = "<div style=\"clear:both\"></div>guest@zmbush.com $ "
 var text = '<br /><br /><br />Type `help` for a list of commands.<br />' + p
 var command = ""
