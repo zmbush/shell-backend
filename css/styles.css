@@ -1,0 +1,79 @@
+body{
+  background-color: black;
+  color: #00FF00;
+  width: 900px;
+  margin: 0 auto;
+  font-family: monospace, sans-serif;
+}
+
+H1{
+  font-size: 50px;
+}
+H2{
+  font-size: 40px;
+}
+H3{
+  font-size: 30px;
+}
+
+NAV UL LI{
+  float: left;
+}
+
+NAV UL LI A{
+  display: block;
+  margin-right: 10px;
+  color: #9999FF;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 44px;
+  width: 100px;
+  text-align: center;
+}
+
+NAV UL LI A:hover{
+  text-decoration: underline;
+}
+
+#intro{
+  clear: both;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#mainContent{
+  clear: both;
+}
+
+UL#posts LI{
+  clear: both;
+  padding-top: 11px;
+  width: 100%;
+}
+
+UL#posts LI DIV.posta{
+  float: left;
+  width: 30%;
+}
+
+UL#posts LI DIV.postl{
+  float: right;
+  width: 70%;
+  text-align: right;
+  vertical-align: top;
+}
+
+UL#posts LI A{
+  color: #9999FF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+UL#posts LI A:hover{
+  text-decoration: underline;
+}
+
+#classes{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
