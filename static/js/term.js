@@ -71,18 +71,18 @@ function processCommand(cin, callback, quiet){
     case '':
       newPrompt();
       break;
-    case 'linkedin':
-      window.location = "http://www.linkedin.com/pub/zachary-bush/1a/a78/671";
-      break;
-    case 'github':
-      window.location = "https://github.com/zipcodeman";
-      break;
-    case 'static':
-      window.location = 'http://www.zmbush.com/static/';
-      break;
-    case 'exit':
-      window.location = 'http://www.google.com/';
-      break;
+    // case 'linkedin':
+      // window.location = "http://www.linkedin.com/pub/zachary-bush/1a/a78/671";
+      // break;
+    // case 'github':
+      // window.location = "https://github.com/zipcodeman";
+      // break;
+    // case 'static':
+      // window.location = 'http://www.zmbush.com/static/';
+      // break;
+    // case 'exit':
+      // window.location = 'http://www.google.com/';
+      // break;
     default:
       args = cin.split(' ');
       command = args[0];
@@ -95,14 +95,17 @@ function processCommand(cin, callback, quiet){
         url: '/' + command + '/' + arg,
         dataType: "json",
         error: function(){
-          callback(cin + ": connection to remote server lost.");
+          callback(cin + ": there was a problem executing your command.");
         },
         success: function(output){
           if (output.command == 'cd') {
             setPrompt(output.output)
             callback('')
-          }else
+          }else if(output.output.indexOf('REDIRECT: ') == 0){
+            window.location = output.output.split(' ')[1]
+          }else{
             callback(output.output);
+          }
         }
       });
   }

@@ -17,9 +17,6 @@ flask.use_debugger = True
 directories = {
   '' : {
     'projects' : {
-      'hello' : {},
-      'boop' : {},
-      'floop' : {}
     },
     'github' : {
     },
@@ -40,7 +37,8 @@ def execute(command, arguments = ""):
     'fs' : directories
   }
   try:
-    fun = getattr(binaries, command) 
+    fun = getattr(binaries, '_' + command) 
+    result = fun(arguments, env)
     retval = { 'command' : command, 'output' : fun(arguments, env) }
     return json.dumps(retval)
 
