@@ -4,6 +4,7 @@ processCommand('pwd', initPrompt);
 var command = ""
 var cursor = "_"
 var accepting_input = true;
+var previous_commands = Array();
 $(function(){
   $(document).keypress(function(e){
     if(accepting_input){
@@ -39,6 +40,7 @@ $(function(){
 });
 
 function processCommand(cin, callback){
+  previous_commands.push(cin)
   switch(cin){
     case '':
       newPrompt();
@@ -67,7 +69,7 @@ function processCommand(cin, callback){
         url: '/' + command + '/' + arg,
         dataType: "json",
         error: function(){
-          callback(cin + ": Bad things happened...");
+          callback(cin + ": connection to remote server lost.");
         },
         success: function(output){
           if (output.command == 'cd') {
