@@ -79,13 +79,13 @@ def _redirect(url, env = None):
     return 'No url supplied to ' + sys._getframe().f_code.co_name
   
 def _linkedin(ignore, env):
-  return _redirect('http://www.linkedin.com/pub/zachary-bush/1a/a78/671')
+  return _redirect(['http://www.linkedin.com/pub/zachary-bush/1a/a78/671'])
 
 def _github(ignore, env):
-  return _redirect('http://www.github.com/zipcodeman')
+  return _redirect(['http://www.github.com/zipcodeman'])
 
 def _static(ignore, env):
-  return _redirect('http://www.zmbush.com/static')
+  return _redirect(['http://www.zmbush.com/static'])
 
 def _exit(ignore, env):
-  return _redirect('http://www.google.com/')
+  return _redirect(['http://www.google.com/'])
