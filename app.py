@@ -8,6 +8,7 @@ import urllib
 import subprocess
 import json
 import sys
+import binaries
 
 app = flask.Flask(__name__)
 app.debug = True
