@@ -89,3 +89,7 @@ def _static(ignore, env):
 
 def _exit(ignore, env):
   return _redirect(['http://www.google.com/'])
+
+def _emacs(ignore, env):
+  return "I'd rather not..."
+
