@@ -32,24 +32,31 @@ def execute(command, arguments = ""):
   if flask.session.new or 'dir' not in flask.session:
     flask.session['dir'] = '/'
   arguments = arguments.split(";")
-
-  if(command == 'pwd'): return flask.session['dir']
-  elif(command == 'cd'):
-    if(len(arguments) == 0 or arguments[0] == ''):
-      flask.session['dir'] = '/'
-      return ''
-  elif(command == 'ls'):
-    if(len(arguments) == 0 or arguments[0] == ''):
-      folders = flask.session['dir'].split('/')[:-1]
-      directory = directories
-      for folder in folders:
-        if folder in directory:
-          directory = directory[folder]
-      retval = ''
-      for name in directory:
-        retval += '<div class="fleft">' + name + '</div>'
-      return retval
-  return command + ": command not found"
+  env = {
+    'dir' : flask.session['dir'],
+    'fs' : directories
+  }
+  try:
+    fun = getattr(binaries, command) 
+    return fun(arguments, env)
+  except AttributeError as e:
+    if(command == 'pwd'): return flask.session['dir']
+    elif(command == 'cd'):
+      if(len(arguments) == 0 or arguments[0] == ''):
+        flask.session['dir'] = '/'
+        return ''
+    elif(command == 'ls'):
+      if(len(arguments) == 0 or arguments[0] == ''):
+        folders = flask.session['dir'].split('/')[:-1]
+        directory = directories
+        for folder in folders:
+          if folder in directory:
+            directory = directory[folder]
+        retval = ''
+        for name in directory:
+          retval += '<div class="fleft">' + name + '</div>'
+        return retval
+    return command + ": command not found"
 
 @app.route('/')
 def index():
