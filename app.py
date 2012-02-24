@@ -17,6 +17,9 @@ flask.use_debugger = True
 directories = {
   '' : {
     'projects' : {
+      'hello' : {}
+      'boop' : {}
+      'floop' : {}
     },
     'github' : {
     },
