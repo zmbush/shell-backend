@@ -1,3 +1,6 @@
+import sys
+import types
+
 def ls(folder, env):
   currentDir = env['dir']
   selection = currentDir.split('/')[:-1]
@@ -29,6 +32,12 @@ def pwd(ignore, env):
 def cd(folder, env):
   return ''
         
+def help(folder, env):
+  retval = "Commands: <br />"
+  for func in dir(sys.modules[__name__]):
+    if isinstance(sys.modules[__name__].__dict__.get(func), types.FunctionType):
+      retval += '<div class="fleft">' + func + '</div>'
+  return retval
 
 def echo(contents, env):
   return " ".join(contents)
