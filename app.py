@@ -34,7 +34,7 @@ directories = {
 def execute(command, arguments = ""):
   if flask.session.new or 'dir' not in flask.session:
     flask.session['dir'] = '/'
-  arguments = arguments.split(";")
+  arguments = arguments.replace("---", '/').split(";")
   env = {
     'dir' : flask.session['dir'],
     'fs' : directories

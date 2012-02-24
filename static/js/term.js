@@ -61,6 +61,7 @@ function processCommand(cin, callback){
       if(args.length > 0){
         args.shift()
         arg = args.join(';')
+        arg = arg.replace('/', '---')
       }
       $.ajax({
         url: '/' + command + '/' + arg,
