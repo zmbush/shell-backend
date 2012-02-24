@@ -64,3 +64,6 @@ def help(folder, env):
 
 def echo(contents, env):
   return " ".join(contents)
+
+def cat(filename, env): 
+  return "meow"
