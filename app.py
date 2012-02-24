@@ -13,6 +13,17 @@ app = flask.Flask(__name__)
 app.debug = True
 flask.use_debugger = True
 
+directories = {
+  '' : {
+    'projects' : {
+    },
+    'github' : {
+    },
+    'linkedin' : {
+    }
+  }
+}
+
 @app.route('/<command>')
 @app.route('/<command>/')
 @app.route('/<command>/<arguments>')
@@ -26,6 +37,17 @@ def execute(command, arguments = ""):
     if(len(arguments) == 0 or arguments[0] == ''):
       flask.session['dir'] = '/'
       return ''
+  elif(command == 'ls'):
+    if(len(arguments) == 0 or arguments[0] == ''):
+      folders = flask.session['dir'].split('/')[:-1]
+      directory = directories
+      for folder in folders:
+        if folder in directory:
+          directory = directory[folder]
+      retval = ''
+      for name in directory:
+        retval += '<div class="fleft">' + name + '</div>'
+      return retval
   return command + ": command not found"
 
 @app.route('/')
@@ -41,5 +63,3 @@ if __name__ == '__main__':
   app.secret_key = 'V\\aPV@@p5_!dlUWJM-//ky&Bg()84$Us'
   app.logger.addHandler(logger)
   app.run(host='0.0.0.0', port=port)
-
-
