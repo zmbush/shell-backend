@@ -34,14 +34,16 @@ directories = {
 def execute(command, arguments = ""):
   if flask.session.new or 'dir' not in flask.session:
     flask.session['dir'] = '/'
-  arguments = arguments.replace("---", '/').split(";")
+  arguments = arguments.replace("---", '/').replace('___', '.').split(";")
   env = {
     'dir' : flask.session['dir'],
     'fs' : directories
   }
   try:
     fun = getattr(binaries, command) 
-    return fun(arguments, env)
+    retval = { 'command' : command, 'output' : fun(arguments, env) }
+    return json.dumps(retval)
+
   except AttributeError as e:
     if(command == 'pwd'): return flask.session['dir']
     elif(command == 'cd'):

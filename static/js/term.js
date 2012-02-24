@@ -1,6 +1,6 @@
 var p = "<div style=\"clear:both\"></div>guest@zmbush.com $ "
 var text = '<br /><br /><br />Type `help` for a list of commands.<br />'
-processCommand('pwd', setPrompt);
+processCommand('pwd', initPrompt);
 var command = ""
 var cursor = "_"
 var accepting_input = true;
@@ -61,16 +61,19 @@ function processCommand(cin, callback){
       if(args.length > 0){
         args.shift()
         arg = args.join(';')
-        arg = arg.replace('/', '---')
+        arg = arg.replace('/', '---').replace('.', '___')
       }
       $.ajax({
         url: '/' + command + '/' + arg,
-        dataType: "html",
+        dataType: "json",
         error: function(){
           callback(cin + ": Bad things happened...");
         },
         success: function(output){
-          callback(output);
+          if (output.command == 'cd') {
+            setPrompt(output.output)
+          }
+          callback(output.output);
         }
       });
   }
@@ -86,10 +89,13 @@ function newPrompt(){
   accepting_input = true;
   command = '';
   $('#term').html(text);
-  $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+  $("html, body").animate({ scrollTop: $(document).height() }, "fast");
 }
 
+function initPrompt(text){
+  setPrompt(text)
+  newPrompt()
+}
 function setPrompt(text){
   p = "guest@zmbush.com " + text + " $ "
-  newPrompt();
 }
