@@ -9,6 +9,7 @@ import subprocess
 import json
 import sys
 import binaries
+import hiddenbin
 
 app = flask.Flask(__name__)
 app.debug = True
@@ -38,13 +39,15 @@ def execute(command, arguments = ""):
   }
   try:
     fun = getattr(binaries, '_' + command) 
-    result = fun(arguments, env)
-    retval = { 'command' : command, 'output' : fun(arguments, env) }
-    return json.dumps(retval)
-
   except AttributeError as e:
-    return json.dumps({ 'command' : command, 
-              'output' : command + ': command not found' })
+    try:
+      fun = getattr(hiddenbin, '_' + command)
+    except AttributeError as e:
+      return json.dumps({'command' : command, 
+                          'output' : command + ': command not found'})
+  result = fun(arguments, env)
+  retval = { 'command' : command, 'output' : fun(arguments, env) }
+  return json.dumps(retval)
 
 @app.route('/')
 def index():

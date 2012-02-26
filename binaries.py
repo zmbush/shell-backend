@@ -93,3 +93,5 @@ def _exit(ignore, env):
 def _emacs(ignore, env):
   return "I'd rather not..."
 
+def _vim(ignore, env):
+  return "I would love to"
