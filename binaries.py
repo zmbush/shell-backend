@@ -95,3 +95,28 @@ def _emacs(ignore, env):
 
 def _vim(ignore, env):
   return "I would love to"
+
+users = {
+    'zach' : 'bush',
+    'mary' : 'stufflebeam',
+    'andre' : 'crabb'
+  }
+def _login(arguments, env):
+  if len(arguments) == 0 or arguments[0] == '':
+    return "You must specify a username"
+  elif len(arguments) == 1 and arguments[0] != '':
+    return "GETQ: password"
+  elif len(arguments) == 2:
+    uname = arguments[0]
+    passwd = arguments[1]
+    if uname in users:
+      if passwd == users[uname]:
+        flask.session['user'] = uname
+    return flask.session['user']
+
+def _whoami(arguments, env):
+  return env['user']
+
+def _logout(arguments, env):
+  flask.session['user'] = 'guest'
+  return 'guest'

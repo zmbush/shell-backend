@@ -32,9 +32,12 @@ directories = {
 def execute(command, arguments = ""):
   if flask.session.new or 'dir' not in flask.session:
     flask.session['dir'] = '/'
+  if 'user' not in flask.session:
+    flask.session['user'] = 'guest'
   arguments = arguments.replace("|-|", '/').replace('|_|', '.').split(";")
   env = {
     'dir' : flask.session['dir'],
+    'user' : flask.session['user'],
     'fs' : directories
   }
   try:
@@ -46,7 +49,8 @@ def execute(command, arguments = ""):
       return json.dumps({'command' : command, 
                           'output' : command + ': command not found'})
   result = fun(arguments, env)
-  retval = { 'command' : command, 'output' : fun(arguments, env) }
+  retval = { 'command' : command, 'output' : fun(arguments, env), 
+             'args' : arguments }
   return json.dumps(retval)
 
 @app.route('/')
