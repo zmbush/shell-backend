@@ -1,2 +1,2 @@
 def _mary(ignore, env):
-  return 'hello'
+  return 'hello, mary'
