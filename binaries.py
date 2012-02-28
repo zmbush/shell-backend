@@ -85,7 +85,7 @@ def _github(ignore, env):
   return _redirect(['http://www.github.com/zipcodeman'])
 
 def _static(ignore, env):
-  return _redirect(['http://www.zmbush.com/static'])
+  return _redirect(['http://static.zmbush.com/'])
 
 def _exit(ignore, env):
   return _redirect(['http://www.google.com/'])
