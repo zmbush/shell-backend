@@ -11,7 +11,6 @@ import sys
 import binaries
 import hiddenbin
 
-
 app = flask.Flask(__name__)
 app.debug = True
 flask.use_debugger = True
