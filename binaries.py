@@ -1,7 +1,7 @@
 import sys
 import types
 import flask
-
+import urllib
 
 def _ls(folder, env):
   currentDir = env['dir']
@@ -121,3 +121,6 @@ def _whoami(arguments, env):
 def _logout(arguments, env):
   flask.session['user'] = 'guest'
   return 'guest'
+
+def _projects(arguments, env):
+  return urllib.urlopen('http://static.zmbush.com/output/projects').read()
