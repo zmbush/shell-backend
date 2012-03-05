@@ -2,6 +2,11 @@ body{
   background: #000;
 }
 
+#herokuImg{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
 A{
   color: #9999FF;
   text-decoration: none;

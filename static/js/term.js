@@ -12,6 +12,17 @@ var echo_input = true;
 var function_input = false;
 var command_index = 0
 var previous_results = null;
+
+
+function cleanArray(actual, deleteValue){
+  var newArray = new Array();
+  for(var i = 0; i<actual.length; i++){
+    if (actual[i] != deleteValue){
+      newArray.push(actual[i]);
+    }
+  }
+  return newArray;
+}
 function displayCommand(){
   newhtml = text
   if(function_input){
@@ -142,10 +153,11 @@ function processCommand(cin, callback, quiet){
       // window.location = 'http://www.google.com/';
       // break;
     default:
-      args = cin.split(' ');
+      args = cin.split(' ')
       command = args[0];
       if(args.length > 0){
         args.shift()
+        args = cleanArray(args, "")
         arg = args.join(';')
         arg = arg.replace(/\//g, '|-|').replace(/\./g, '|_|')
       }
@@ -175,9 +187,7 @@ function processCommand(cin, callback, quiet){
             echo_input = false
             displayOutput("")
           }else if(output.command == 'login' || output.command == 'logout'){
-            user = output.output
-            setPrompt()
-            callback('')
+            processCommand('whoami', initPrompt, true);
           }else{
             callback(output.output);
           }
