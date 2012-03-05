@@ -229,5 +229,5 @@ function promptDir(text){
   newPrompt()
 }
 function setPrompt(){
-  p = user + "@zmbush.com " + directory + " $ "
+  p = '<div style="clear:both"></div>' + user + "@zmbush.com " + directory + " $ "
 }
