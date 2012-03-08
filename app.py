@@ -1,6 +1,7 @@
 import os
 import time
 import flask
+import flaskext.mail
 import logging
 import werkzeug
 import urllib2
@@ -13,6 +14,8 @@ import hiddenbin
 
 
 app = flask.Flask(__name__)
+mail = flaskext.mail.Mail(app)
+
 app.debug = True
 flask.use_debugger = True
 
@@ -39,7 +42,8 @@ def execute(command, arguments = ""):
   env = {
     'dir' : flask.session['dir'],
     'user' : flask.session['user'],
-    'fs' : directories
+    'fs' : directories,
+    'mail' : mail
   }
   try:
     fun = getattr(binaries, '_' + command) 
@@ -50,8 +54,7 @@ def execute(command, arguments = ""):
       return json.dumps({'command' : command, 
                           'output' : command + ': command not found'})
   result = fun(arguments, env)
-  retval = { 'command' : command, 'output' : fun(arguments, env), 
-             'args' : arguments }
+  retval = { 'command' : command, 'output' : result, 'args' : arguments }
   return json.dumps(retval)
 
 @app.route('/')
