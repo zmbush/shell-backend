@@ -80,7 +80,7 @@ def _redirect(url, env = None):
     return 'No url supplied to ' + sys._getframe().f_code.co_name
   
 def _linkedin(ignore, env):
-  return _redirect(['http://www.linkedin.com/pub/zachary-bush/1a/a78/671'])
+  return _redirect(['http://www.linkedin.com/in/zmbush'])
 
 def _github(ignore, env):
   return _redirect(['http://www.github.com/zipcodeman'])
