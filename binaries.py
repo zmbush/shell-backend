@@ -124,3 +124,6 @@ def _logout(arguments, env):
 
 def _projects(arguments, env):
   return urllib.urlopen('http://static.zmbush.com/output/projects').read()
+
+def _hello(ignore, env):
+  return "Hi!"
