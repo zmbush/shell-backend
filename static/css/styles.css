@@ -30,8 +30,11 @@ A{
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
-
-.fleft{
+.fleftCommand{
   float: left;
-  width: 200px;
+  width: 100px;
+}
+.fleftDesc{
+  float: left;
+  width: 300px;
 }
