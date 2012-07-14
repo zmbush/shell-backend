@@ -63,6 +63,10 @@ def index():
   returnVal = flask.render_template('index.html', error=error)
   return returnVal
 
+@app.route('/google15e325ecba2a6be2.html')
+def google_auth():
+  return 'google-site-verification: google15e325ecba2a6be2.html'
+
 if __name__ == '__main__':
   port = int(os.environ.get('PORT', 5000))
   logger = logging.FileHandler('logfiles')
