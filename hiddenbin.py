@@ -5,7 +5,7 @@ def _mary(ignore, env):
   return 'hello, mary'
 
 def _molly(ignore, env):
-  return "Hello, Molly"
+  return "Let's stay happy forever"
 
 def _zayd(ignore, env):
   return "Zed"
