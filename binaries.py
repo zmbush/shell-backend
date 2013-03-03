@@ -201,6 +201,13 @@ desc['projects'] = \
 def _projects(arguments, env):
   return urllib.urlopen('http://static.zmbush.com/output/projects').read()
 
+desc['resume'] = \
+"""
+  Display my resume
+"""
+def _resume(arguments, env):
+  return _redirect(['static/resume.pdf'])
+
 desc['hello'] = \
 """
   How are you?

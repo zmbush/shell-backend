@@ -177,6 +177,7 @@ function processCommand(cin, callback, quiet){
             callback('')
           }else if(output.output.indexOf('REDIRECT: ') == 0){
             window.location = output.output.split(' ')[1]
+            displayOutput('Redirecting...')
           }else if(output.output.indexOf('GET: ') == 0){ 
             // Get a string and send it back to the function.
             function_input = true
