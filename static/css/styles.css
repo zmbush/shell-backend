@@ -30,11 +30,17 @@ A{
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
-.fleftCommand{
+.help{
   float: left;
-  width: 100px;
+  width: 27em;
 }
-.fleftDesc{
+
+.help DIV.name{
+  font-weight: bold;
+  width: 100px;
   float: left;
-  width: 300px;
+}
+
+.help DIV.description {
+  float: left;
 }

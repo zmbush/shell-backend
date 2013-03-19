@@ -12,7 +12,6 @@ import sys
 import binaries
 import hiddenbin
 
-
 app = flask.Flask(__name__)
 mail = flaskext.mail.Mail(app)
 

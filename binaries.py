@@ -36,14 +36,14 @@ def _ls(folder, env):
 
 desc['pwd'] = \
 """
-  list  
+  show current directory  
 """
 def _pwd(ignore, env):
   return env['dir']
 
 desc['cd'] = \
 """
-  list  
+  move
 """
 def _cd(folder, env):
   selection = env['dir'].split('/')[:-1]
@@ -78,9 +78,8 @@ def _help(folder, env):
   retval = "Commands: <br />"
   for func in dir(sys.modules[__name__]):
     if isinstance(sys.modules[__name__].__dict__.get(func), types.FunctionType):
-      retval += '<div class="fleftCommand">' + func[1:] +                 \
-                '</div><div class="fleftDesc">' + desc[func[1:]] + '</div>'
-      # retval += '<div class="fleft">' + func[1:] + '</div>'
+      retval += '<div class="help"><div class="name">' + func[1:] + '</div>'               + \
+                '<div class="description">' + desc[func[1:]] + '</div></div>'
   return retval
 
 desc['echo'] = \
