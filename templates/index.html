@@ -3,13 +3,13 @@
   <head>
     <title>Terminal@zmbush.com "And another thing..."</title>
     <link rel="stylesheet" type="text/css" 
-      href="{{ url_for('static', filename='css/reset.css') }}" />
+      href=".{{ url_for('static', filename='css/reset.css') }}" />
     <link rel="stylesheet" type="text/css" 
-      href="{{ url_for('static', filename='css/styles.css') }}" />
+      href=".{{ url_for('static', filename='css/styles.css') }}" />
     <script 
-      src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+      src=".{{ url_for('static', filename='js/jquery.js') }}"></script>
     <script 
-      src="{{ url_for('static', filename='js/term.js') }}"></script>
+      src=".{{ url_for('static', filename='js/term.js') }}"></script>
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-33377926-1']);

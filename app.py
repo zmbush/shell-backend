@@ -67,7 +67,7 @@ def google_auth():
   return 'google-site-verification: google15e325ecba2a6be2.html'
 
 if __name__ == '__main__':
-  port = int(os.environ.get('PORT', 5000))
+  port = int(os.environ.get('CLI_PORT', 42001))
   logger = logging.FileHandler('logfiles')
   logger.setLevel(logging.WARNING)
   app.secret_key = 'V\\aPV@@p5_!dlUWJM-//ky&Bg()84$Us'
