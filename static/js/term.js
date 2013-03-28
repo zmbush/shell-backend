@@ -162,7 +162,7 @@ function processCommand(cin, callback, quiet){
         arg = arg.replace(/\//g, '|-|').replace(/\./g, '|_|')
       }
       $.ajax({
-        url: '/' + command + '/' + arg,
+        url: './' + command + '/' + arg,
         dataType: "json",
         error: function(){
           callback(cin + ": there was a problem executing your command.");
