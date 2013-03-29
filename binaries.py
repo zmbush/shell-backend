@@ -133,7 +133,7 @@ desc['static'] = \
   Redirect to the static page
 """
 def _static(ignore, env):
-  return _redirect(['http://www.zmbush.com/'])
+  return _redirect(['http://test.zmbush.com/'])
 
 desc['exit'] = \
 """
@@ -198,7 +198,7 @@ desc['projects'] = \
   List my Projects
 """
 def _projects(arguments, env):
-  return urllib.urlopen('http://static.zmbush.com/output/projects').read()
+  return urllib.urlopen('http://test.zmbush.com/output/projects').read()
 
 desc['resume'] = \
 """
