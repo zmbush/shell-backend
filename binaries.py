@@ -133,7 +133,7 @@ desc['static'] = \
   Redirect to the static page
 """
 def _static(ignore, env):
-  return _redirect(['http://test.zmbush.com/'])
+  return _redirect(['/'])
 
 desc['exit'] = \
 """
