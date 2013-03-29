@@ -140,6 +140,10 @@ function processCommand(cin, callback, quiet){
     case '':
       newPrompt();
       break;
+    case 'clear':
+      $('#term').html('');
+      newPrompt();
+      break;
     // case 'linkedin':
       // window.location = "http://www.linkedin.com/pub/zachary-bush/1a/a78/671";
       // break;

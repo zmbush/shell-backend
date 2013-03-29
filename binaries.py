@@ -213,3 +213,10 @@ desc['hello'] = \
 """
 def _hello(ignore, env):
   return "Hi!"
+
+desc['clear'] = \
+"""
+Clear output
+"""
+def _clear(ignare, env):
+  return ""
