@@ -78,7 +78,7 @@ def _help(folder, env):
   retval = "Commands: <br />"
   for func in dir(sys.modules[__name__]):
     if isinstance(sys.modules[__name__].__dict__.get(func), types.FunctionType):
-      retval += '<div class="help"><div class="name">' + func[1:] + '</div>'               + \
+      retval += '<div class="help"><div class="name">' + func[1:] + '</div>' + \
                 '<div class="description">' + desc[func[1:]] + '</div></div>'
   return retval
 
