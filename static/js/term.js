@@ -141,7 +141,7 @@ function processCommand(cin, callback, quiet){
       newPrompt();
       break;
     case 'clear':
-      $('#term').html('');
+      text = '<br /><br /><br />Type `help` for a list of commands.<br />'
       newPrompt();
       break;
     // case 'linkedin':
