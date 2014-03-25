@@ -126,7 +126,7 @@ desc['github'] = \
   Load my github page
 """
 def _github(ignore, env):
-  return _redirect(['http://www.github.com/zipcodeman'])
+  return _redirect(['http://www.github.com/zmbush'])
 
 desc['static'] = \
 """

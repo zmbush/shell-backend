@@ -148,7 +148,7 @@ function processCommand(cin, callback, quiet){
       // window.location = "http://www.linkedin.com/pub/zachary-bush/1a/a78/671";
       // break;
     // case 'github':
-      // window.location = "https://github.com/zipcodeman";
+      // window.location = "https://github.com/zmbush";
       // break;
     // case 'static':
       // window.location = 'http://www.zmbush.com/static/';
